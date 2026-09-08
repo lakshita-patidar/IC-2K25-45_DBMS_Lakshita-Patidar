@@ -1,0 +1,105 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 8.0.46 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mcadb              |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.02 sec)
+
+mysql> create database mca_assignment;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use mca_assignment;
+Database changed
+mysql> create table employee (employee_id int primary key, first_name varchar(20), last_name varchar(25), email varchar(50), phone_number varchar(20), hire_date date, job_id int, salary decimal(8,2), commission decimal(8,2), manager_id int, department_id int );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> describe employee;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| employee_id   | int          | NO   | PRI | NULL    |       |
+| first_name    | varchar(20)  | YES  |     | NULL    |       |
+| last_name     | varchar(25)  | YES  |     | NULL    |       |
+| email         | varchar(50)  | YES  |     | NULL    |       |
+| phone_number  | varchar(20)  | YES  |     | NULL    |       |
+| hire_date     | date         | YES  |     | NULL    |       |
+| job_id        | int          | YES  |     | NULL    |       |
+| salary        | decimal(8,2) | YES  |     | NULL    |       |
+| commission    | decimal(8,2) | YES  |     | NULL    |       |
+| manager_id    | int          | YES  |     | NULL    |       |
+| department_id | int          | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+11 rows in set (0.02 sec)
+
+mysql> insert into employee
+    -> (employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary, commission, manager_id, department_id)
+    -> values
+    -> (1, 'Aadi' ,'jain', 'aadi@gmail.com', '9876543219', '2025-01-05', 1, 50000, 2000, 103, 10),
+    -> (2, 'Ram' ,'sharma', 'ram@gmail.com', '9876543210', '2023-05-23', 3, 80000, 2500, 101, 20),
+    -> (3, 'Sam' ,'Mehta', 'sam@gmail.com', '9876543211', '2026-01-12', 2, 10000, 1000, 102, 10),
+    -> (4, 'Priya' ,'Patel', 'priya@gmail.com', '9876543212', '2025-10-15', 4, 20000, 1500, 103, 30),
+    -> (5, 'Priti' ,'Jain', 'priti@gmail.com', '9876543213', '2025-03-25', 1, 40000, 2000, 102, 30),
+    -> (6, 'Samay' ,'Sharma', 'samay@gmail.com', '9876543214', '2025-03-23', 1, 40000, 2000, 102, 30),
+    -> (7, 'Swati' ,'Sahu', 'swati@gmail.com', '9876543215', '2024-06-13', 1, 50000, 1500, 101, 10),
+    -> (8, 'Mukti' ,'Mehra', 'mukti@gmail.com', '9876543216', '2022-01-25', 1, 90000, 3000, 105, 40),
+    -> (9, 'Riya' ,'Mehta', 'riya@gmail.com', '9876543217', '2023-04-02', 3, 60000, 3000, 106, 50),
+    -> (10, 'Siya' ,'Sharma', 'siya@gmail.com', '9876543218', '2023-03-22', 4, 75000, 2500, 103, 10),
+    -> (11, 'Shyam' ,'Sharma', 'shyam@gmail.com', '9876543111', '2023-06-12', 4, 75000, 2500, 104, 20);
+Query OK, 11 rows affected (0.02 sec)
+Records: 11  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++-------------+------------+-----------+-----------------+--------------+------------+--------+----------+------------+------------+---------------+
+| employee_id | first_name | last_name | email           | phone_number | hire_date  | job_id | salary   | commission | manager_id | department_id |
++-------------+------------+-----------+-----------------+--------------+------------+--------+----------+------------+------------+---------------+
+|           1 | Aadi       | jain      | aadi@gmail.com  | 9876543219   | 2025-01-05 |      1 | 50000.00 |    2000.00 |        103 |            10 |
+|           2 | Ram        | sharma    | ram@gmail.com   | 9876543210   | 2023-05-23 |      3 | 80000.00 |    2500.00 |        101 |            20 |
+|           3 | Sam        | Mehta     | sam@gmail.com   | 9876543211   | 2026-01-12 |      2 | 10000.00 |    1000.00 |        102 |            10 |
+|           4 | Priya      | Patel     | priya@gmail.com | 9876543212   | 2025-10-15 |      4 | 20000.00 |    1500.00 |        103 |            30 |
+|           5 | Priti      | Jain      | priti@gmail.com | 9876543213   | 2025-03-25 |      1 | 40000.00 |    2000.00 |        102 |            30 |
+|           6 | Samay      | Sharma    | samay@gmail.com | 9876543214   | 2025-03-23 |      1 | 40000.00 |    2000.00 |        102 |            30 |
+|           7 | Swati      | Sahu      | swati@gmail.com | 9876543215   | 2024-06-13 |      1 | 50000.00 |    1500.00 |        101 |            10 |
+|           8 | Mukti      | Mehra     | mukti@gmail.com | 9876543216   | 2022-01-25 |      1 | 90000.00 |    3000.00 |        105 |            40 |
+|           9 | Riya       | Mehta     | riya@gmail.com  | 9876543217   | 2023-04-02 |      3 | 60000.00 |    3000.00 |        106 |            50 |
+|          10 | Siya       | Sharma    | siya@gmail.com  | 9876543218   | 2023-03-22 |      4 | 75000.00 |    2500.00 |        103 |            10 |
+|          11 | Shyam      | Sharma    | shyam@gmail.com | 9876543111   | 2023-06-12 |      4 | 75000.00 |    2500.00 |        104 |            20 |
++-------------+------------+-----------+-----------------+--------------+------------+--------+----------+------------+------------+---------------+
+11 rows in set (0.00 sec)
+
+mysql> select first_name as "First Name", last_name as "Last Name" from employee;
++------------+-----------+
+| First Name | Last Name |
++------------+-----------+
+| Aadi       | jain      |
+| Ram        | sharma    |
+| Sam        | Mehta     |
+| Priya      | Patel     |
+| Priti      | Jain      |
+| Samay      | Sharma    |
+| Swati      | Sahu      |
+| Mukti      | Mehra     |
+| Riya       | Mehta     |
+| Siya       | Sharma    |
+| Shyam      | Sharma    |
++------------+-----------+
+11 rows in set (0.00 sec)
+
+mysql>
