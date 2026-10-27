@@ -1,0 +1,9 @@
+ MySQL  localhost:33060+ ssl  dbms_assignment  SQL > SELECT COUNT(employee_id) AS number_of_employees
+                                                  -> FROM employees;
++---------------------+
+| number_of_employees |
++---------------------+
+|                  10 |
++---------------------+
+1 row in set (0.0053 sec)
+ MySQL  localhost:33060+ ssl  dbms_assignment  SQL >
